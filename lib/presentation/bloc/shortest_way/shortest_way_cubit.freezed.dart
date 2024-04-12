@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'path_cubit.dart';
+part of 'shortest_way_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$PathState {
+mixin _$ShortestWayState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -69,15 +69,16 @@ mixin _$PathState {
 }
 
 /// @nodoc
-abstract class $PathStateCopyWith<$Res> {
-  factory $PathStateCopyWith(PathState value, $Res Function(PathState) then) =
-      _$PathStateCopyWithImpl<$Res, PathState>;
+abstract class $ShortestWayStateCopyWith<$Res> {
+  factory $ShortestWayStateCopyWith(
+          ShortestWayState value, $Res Function(ShortestWayState) then) =
+      _$ShortestWayStateCopyWithImpl<$Res, ShortestWayState>;
 }
 
 /// @nodoc
-class _$PathStateCopyWithImpl<$Res, $Val extends PathState>
-    implements $PathStateCopyWith<$Res> {
-  _$PathStateCopyWithImpl(this._value, this._then);
+class _$ShortestWayStateCopyWithImpl<$Res, $Val extends ShortestWayState>
+    implements $ShortestWayStateCopyWith<$Res> {
+  _$ShortestWayStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -94,7 +95,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$PathStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$ShortestWayStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -108,7 +109,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'PathState.initial()';
+    return 'ShortestWayState.initial()';
   }
 
   @override
@@ -195,7 +196,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements PathState {
+abstract class _Initial implements ShortestWayState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -210,7 +211,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$PathStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$ShortestWayStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -245,7 +246,7 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   String toString() {
-    return 'PathState.loaded(solutions: $solutions)';
+    return 'ShortestWayState.loaded(solutions: $solutions)';
   }
 
   @override
@@ -342,7 +343,7 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements PathState {
+abstract class _Loaded implements ShortestWayState {
   const factory _Loaded(final List<Solution> solutions) = _$LoadedImpl;
 
   List<Solution> get solutions;
@@ -360,7 +361,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$PathStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$ShortestWayStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -374,7 +375,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'PathState.loading()';
+    return 'ShortestWayState.loading()';
   }
 
   @override
@@ -461,7 +462,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements PathState {
+abstract class _Loading implements ShortestWayState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -476,7 +477,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$PathStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$ShortestWayStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -506,7 +507,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'PathState.error(error: $error)';
+    return 'ShortestWayState.error(error: $error)';
   }
 
   @override
@@ -601,7 +602,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements PathState {
+abstract class _Error implements ShortestWayState {
   const factory _Error(final String error) = _$ErrorImpl;
 
   String get error;

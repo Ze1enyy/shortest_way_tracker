@@ -19,7 +19,7 @@ class ProcessScreen extends StatefulWidget {
 
 class _ProcessScreenState extends State<ProcessScreen> {
   final _taskCubit = sl<TaskCubit>();
-  final _pathCubit = sl<PathCubit>();
+  final _pathCubit = sl<ShortestWayCubit>();
   final _resultsCubit = sl<ResultsCubit>();
   final _timerCubit = sl<TimerCubit>();
   String get url => widget.url;
@@ -73,7 +73,7 @@ class _ProcessScreenState extends State<ProcessScreen> {
                   loading: () =>
                       const Center(child: CircularProgressIndicator()),
                   loaded: (tasks) {
-                    return BlocBuilder<PathCubit, PathState>(
+                    return BlocBuilder<ShortestWayCubit, ShortestWayState>(
                       bloc: _pathCubit,
                       builder: (context, state) {
                         return state.when(

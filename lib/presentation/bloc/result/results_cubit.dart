@@ -11,8 +11,12 @@ class ResultsCubit extends Cubit<ResultsState> {
   final TaskService _taskService;
 
   Future<void> sendAnswer(List<Solution> solutions, String url) async {
-    emit(const _Loading());
-    await _taskService.sendAnswer(solutions, url);
-    emit(_Loaded(solutions));
+    try {
+      emit(const _Loading());
+      await _taskService.sendAnswer(solutions, url);
+      emit(_Loaded(solutions));
+    } catch (e) {
+      emit(_Error(e));
+    }
   }
 }

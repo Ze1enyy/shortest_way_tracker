@@ -4,11 +4,11 @@ import 'package:best_way_tracker/domain/entity/task.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'path_state.dart';
-part 'path_cubit.freezed.dart';
+part 'shortest_way_state.dart';
+part 'shortest_way_cubit.freezed.dart';
 
-class PathCubit extends Cubit<PathState> {
-  PathCubit(this._dataSource) : super(const PathState.initial());
+class ShortestWayCubit extends Cubit<ShortestWayState> {
+  ShortestWayCubit(this._dataSource) : super(const ShortestWayState.initial());
   final ShortestWayDataSource _dataSource;
 
   Future<void> findShortestWay({

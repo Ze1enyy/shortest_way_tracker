@@ -4,12 +4,12 @@ import 'package:best_way_tracker/assembly/model/task_dto_from_json_factory.dart'
 import 'package:best_way_tracker/data/datasource/shortest_way_datasource.dart';
 import 'package:best_way_tracker/data/datasource/task_datasource.dart';
 import 'package:best_way_tracker/data/model/task_dto.dart';
-import 'package:best_way_tracker/data/service/path_repository.dart';
+import 'package:best_way_tracker/data/service/shortest_way_repository.dart';
 import 'package:best_way_tracker/data/service/task_repository.dart';
 import 'package:best_way_tracker/domain/entity/task.dart';
-import 'package:best_way_tracker/domain/service/path_service.dart';
+import 'package:best_way_tracker/domain/service/shortest_way_service.dart';
 import 'package:best_way_tracker/domain/service/task_service.dart';
-import 'package:best_way_tracker/presentation/bloc/path/path_cubit.dart';
+import 'package:best_way_tracker/presentation/bloc/shortest_way/shortest_way_cubit.dart';
 import 'package:best_way_tracker/presentation/bloc/result/results_cubit.dart';
 import 'package:best_way_tracker/presentation/bloc/task/task_cubit.dart';
 import 'package:best_way_tracker/presentation/bloc/timer/timer_cubit.dart';
@@ -32,8 +32,8 @@ void _registerServices() {
     ..registerFactory<TaskService>(
       () => TaskRepository(sl.get()),
     )
-    ..registerFactory<PathService>(
-      () => PathRepository(sl.get()),
+    ..registerFactory<ShortestWayService>(
+      () => ShortestWayRepository(sl.get()),
     );
 }
 
@@ -52,8 +52,8 @@ void _registerBlocs() {
     ..registerLazySingleton<ResultsCubit>(
       () => ResultsCubit(sl.get()),
     )
-    ..registerLazySingleton<PathCubit>(
-      () => PathCubit(sl.get()),
+    ..registerLazySingleton<ShortestWayCubit>(
+      () => ShortestWayCubit(sl.get()),
     )
     ..registerFactory<TimerCubit>(
       TimerCubit.new,
