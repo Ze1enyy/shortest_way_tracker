@@ -1,6 +1,6 @@
 import 'package:best_way_tracker/di.dart';
-import 'package:best_way_tracker/presentation/bloc/path/path_cubit.dart';
 import 'package:best_way_tracker/presentation/bloc/result/results_cubit.dart';
+import 'package:best_way_tracker/presentation/bloc/shortest_way/shortest_way_cubit.dart';
 import 'package:best_way_tracker/presentation/bloc/task/task_cubit.dart';
 import 'package:best_way_tracker/presentation/bloc/timer/timer_cubit.dart';
 import 'package:best_way_tracker/presentation/page/results_screen.dart';
