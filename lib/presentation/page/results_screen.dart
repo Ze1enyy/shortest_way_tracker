@@ -57,7 +57,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                     .toList(),
               );
             },
-            error: () => const SizedBox.shrink(),
+            error: (err) => Text(err.toString()),
           );
         },
       ),

@@ -21,7 +21,7 @@ mixin _$ResultsState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Solution> solutions) loaded,
-    required TResult Function() error,
+    required TResult Function(Object? error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$ResultsState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Solution> solutions)? loaded,
-    TResult? Function()? error,
+    TResult? Function(Object? error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$ResultsState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Solution> solutions)? loaded,
-    TResult Function()? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,7 +127,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Solution> solutions) loaded,
-    required TResult Function() error,
+    required TResult Function(Object? error) error,
   }) {
     return initial();
   }
@@ -138,7 +138,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Solution> solutions)? loaded,
-    TResult? Function()? error,
+    TResult? Function(Object? error)? error,
   }) {
     return initial?.call();
   }
@@ -149,7 +149,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Solution> solutions)? loaded,
-    TResult Function()? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -241,7 +241,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Solution> solutions) loaded,
-    required TResult Function() error,
+    required TResult Function(Object? error) error,
   }) {
     return loading();
   }
@@ -252,7 +252,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Solution> solutions)? loaded,
-    TResult? Function()? error,
+    TResult? Function(Object? error)? error,
   }) {
     return loading?.call();
   }
@@ -263,7 +263,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Solution> solutions)? loaded,
-    TResult Function()? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -388,7 +388,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Solution> solutions) loaded,
-    required TResult Function() error,
+    required TResult Function(Object? error) error,
   }) {
     return loaded(solutions);
   }
@@ -399,7 +399,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Solution> solutions)? loaded,
-    TResult? Function()? error,
+    TResult? Function(Object? error)? error,
   }) {
     return loaded?.call(solutions);
   }
@@ -410,7 +410,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Solution> solutions)? loaded,
-    TResult Function()? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -471,6 +471,8 @@ abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Object? error});
 }
 
 /// @nodoc
@@ -480,26 +482,48 @@ class __$$ErrorImplCopyWithImpl<$Res>
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_$ErrorImpl(
+      freezed == error ? _value.error : error,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ErrorImpl implements _Error {
-  const _$ErrorImpl();
+  const _$ErrorImpl(this.error);
+
+  @override
+  final Object? error;
 
   @override
   String toString() {
-    return 'ResultsState.error()';
+    return 'ResultsState.error(error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ErrorImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorImpl &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -507,9 +531,9 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Solution> solutions) loaded,
-    required TResult Function() error,
+    required TResult Function(Object? error) error,
   }) {
-    return error();
+    return error(this.error);
   }
 
   @override
@@ -518,9 +542,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<Solution> solutions)? loaded,
-    TResult? Function()? error,
+    TResult? Function(Object? error)? error,
   }) {
-    return error?.call();
+    return error?.call(this.error);
   }
 
   @override
@@ -529,11 +553,11 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Solution> solutions)? loaded,
-    TResult Function()? error,
+    TResult Function(Object? error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(this.error);
     }
     return orElse();
   }
@@ -577,5 +601,10 @@ class _$ErrorImpl implements _Error {
 }
 
 abstract class _Error implements ResultsState {
-  const factory _Error() = _$ErrorImpl;
+  const factory _Error(final Object? error) = _$ErrorImpl;
+
+  Object? get error;
+  @JsonKey(ignore: true)
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -14,48 +14,57 @@ class TaskDataSource {
   final Factory<Task, TaskDto> _dtoFactory;
 
   Future<List<Task>> fetchTasks(String url) async {
-    final resp = await http.get(Uri.parse(url));
-    final data = jsonDecode(resp.body);
+    try {
+      final resp = await http.get(Uri.parse(url));
+      final data = jsonDecode(resp.body);
 
-    final tasks = <Task>[];
+      final tasks = <Task>[];
 
-    for (final task in data['data'] as List<dynamic>) {
-      final rows = <List<String>>[];
+      for (final task in data['data'] as List<dynamic>) {
+        final rows = <List<String>>[];
 
-      for (final row in FieldParser.parseList(task['field'] as List<dynamic>)) {
-        rows.add(row);
+        for (final row
+            in FieldParser.parseList(task['field'] as List<dynamic>)) {
+          rows.add(row);
+        }
+        final dto = _jsonFactory
+            .create({...task as Map<String, dynamic>, 'rows': rows});
+        final parsedTask = _dtoFactory.create(dto);
+        tasks.add(
+          parsedTask,
+        );
       }
-      final dto =
-          _jsonFactory.create({...task as Map<String, dynamic>, 'rows': rows});
-      final parsedTask = _dtoFactory.create(dto);
-      tasks.add(
-        parsedTask,
-      );
+      return tasks;
+    } catch (e) {
+      throw Exception(e);
     }
-    return tasks;
   }
 
   Future<void> sendAnswer(List<Solution> solutions, String url) async {
-    await http.post(
-      Uri.parse(url),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode(
-        solutions
-            .map(
-              (solution) => {
-                'id': solution.taskId,
-                'result': {
-                  'steps': solution.path
-                      .map((cell) => {'x': '${cell.x}', 'y': '${cell.y}'})
-                      .toList(),
-                  'path': FieldParser.stringify(solution.path),
+    try {
+      await http.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(
+          solutions
+              .map(
+                (solution) => {
+                  'id': solution.taskId,
+                  'result': {
+                    'steps': solution.path
+                        .map((cell) => {'x': '${cell.x}', 'y': '${cell.y}'})
+                        .toList(),
+                    'path': FieldParser.stringify(solution.path),
+                  },
                 },
-              },
-            )
-            .toList(),
-      ),
-    );
+              )
+              .toList(),
+        ),
+      );
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }

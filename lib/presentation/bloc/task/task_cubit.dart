@@ -13,10 +13,14 @@ class TaskCubit extends Cubit<TaskState> {
   final TaskService _taskService;
 
   Future<void> fetchTasks(String url) async {
-    emit(const _Loading());
-    final tasks = await _taskService.fetchTasks(url);
-    emit(
-      _Loaded(tasks),
-    );
+    try {
+      emit(const _Loading());
+      final tasks = await _taskService.fetchTasks(url);
+      emit(
+        _Loaded(tasks),
+      );
+    } catch (e) {
+      emit(_Error(e));
+    }
   }
 }

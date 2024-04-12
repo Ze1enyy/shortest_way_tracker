@@ -37,7 +37,7 @@ class _ProcessScreenState extends State<ProcessScreen> {
     _taskCubit.fetchTasks(url);
     _resultsCubit.stream.listen((state) {
       state.whenOrNull(
-        error: () {
+        error: (err) {
           _isButtonActive = true;
         },
         loading: () {
