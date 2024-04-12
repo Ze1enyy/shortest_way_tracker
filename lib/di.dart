@@ -1,7 +1,7 @@
 import 'package:best_way_tracker/assembly/entity/task_from_dto_factory.dart';
 import 'package:best_way_tracker/assembly/factory.dart';
 import 'package:best_way_tracker/assembly/model/task_dto_from_json_factory.dart';
-import 'package:best_way_tracker/data/datasource/path_datasource.dart';
+import 'package:best_way_tracker/data/datasource/shortest_way_datasource.dart';
 import 'package:best_way_tracker/data/datasource/task_datasource.dart';
 import 'package:best_way_tracker/data/model/task_dto.dart';
 import 'package:best_way_tracker/data/service/path_repository.dart';

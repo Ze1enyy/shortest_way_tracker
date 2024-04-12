@@ -1,4 +1,4 @@
-import 'package:best_way_tracker/data/datasource/path_datasource.dart';
+import 'package:best_way_tracker/data/datasource/shortest_way_datasource.dart';
 import 'package:best_way_tracker/domain/entity/cell.dart';
 import 'package:best_way_tracker/domain/service/path_service.dart';
 
