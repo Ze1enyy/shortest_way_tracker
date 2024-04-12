@@ -28,7 +28,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
             loading: () => const Center(child: CircularProgressIndicator()),
             loaded: (solutions) {
               return ListView(
-                children: solutions.entries
+                children: solutions
                     .map(
                       (solution) => GestureDetector(
                         onTap: () {
@@ -37,8 +37,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
                             MaterialPageRoute<GridScreen>(
                               builder: (context) {
                                 return GridScreen(
-                                  taskId: solution.key,
-                                  path: solution.value,
+                                  taskId: solution.taskId,
+                                  path: solution.path,
                                 );
                               },
                             ),
@@ -48,7 +48,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(border: Border.all()),
                           child: Text(
-                            FieldParser.stringify(solution.value),
+                            FieldParser.stringify(solution.path),
                             textAlign: TextAlign.center,
                           ),
                         ),

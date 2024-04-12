@@ -20,7 +20,7 @@ mixin _$ResultsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Map<String, List<Cell>> solutions) loaded,
+    required TResult Function(List<Solution> solutions) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$ResultsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Map<String, List<Cell>> solutions)? loaded,
+    TResult? Function(List<Solution> solutions)? loaded,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$ResultsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Map<String, List<Cell>> solutions)? loaded,
+    TResult Function(List<Solution> solutions)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Map<String, List<Cell>> solutions) loaded,
+    required TResult Function(List<Solution> solutions) loaded,
     required TResult Function() error,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Map<String, List<Cell>> solutions)? loaded,
+    TResult? Function(List<Solution> solutions)? loaded,
     TResult? Function()? error,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Map<String, List<Cell>> solutions)? loaded,
+    TResult Function(List<Solution> solutions)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -240,7 +240,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Map<String, List<Cell>> solutions) loaded,
+    required TResult Function(List<Solution> solutions) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -251,7 +251,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Map<String, List<Cell>> solutions)? loaded,
+    TResult? Function(List<Solution> solutions)? loaded,
     TResult? Function()? error,
   }) {
     return loading?.call();
@@ -262,7 +262,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Map<String, List<Cell>> solutions)? loaded,
+    TResult Function(List<Solution> solutions)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -320,7 +320,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, List<Cell>> solutions});
+  $Res call({List<Solution> solutions});
 }
 
 /// @nodoc
@@ -340,7 +340,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
       null == solutions
           ? _value._solutions
           : solutions // ignore: cast_nullable_to_non_nullable
-              as Map<String, List<Cell>>,
+              as List<Solution>,
     ));
   }
 }
@@ -348,15 +348,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(final Map<String, List<Cell>> solutions)
-      : _solutions = solutions;
+  const _$LoadedImpl(final List<Solution> solutions) : _solutions = solutions;
 
-  final Map<String, List<Cell>> _solutions;
+  final List<Solution> _solutions;
   @override
-  Map<String, List<Cell>> get solutions {
-    if (_solutions is EqualUnmodifiableMapView) return _solutions;
+  List<Solution> get solutions {
+    if (_solutions is EqualUnmodifiableListView) return _solutions;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_solutions);
+    return EqualUnmodifiableListView(_solutions);
   }
 
   @override
@@ -388,7 +387,7 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Map<String, List<Cell>> solutions) loaded,
+    required TResult Function(List<Solution> solutions) loaded,
     required TResult Function() error,
   }) {
     return loaded(solutions);
@@ -399,7 +398,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Map<String, List<Cell>> solutions)? loaded,
+    TResult? Function(List<Solution> solutions)? loaded,
     TResult? Function()? error,
   }) {
     return loaded?.call(solutions);
@@ -410,7 +409,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Map<String, List<Cell>> solutions)? loaded,
+    TResult Function(List<Solution> solutions)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -459,9 +458,9 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements ResultsState {
-  const factory _Loaded(final Map<String, List<Cell>> solutions) = _$LoadedImpl;
+  const factory _Loaded(final List<Solution> solutions) = _$LoadedImpl;
 
-  Map<String, List<Cell>> get solutions;
+  List<Solution> get solutions;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -507,7 +506,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Map<String, List<Cell>> solutions) loaded,
+    required TResult Function(List<Solution> solutions) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -518,7 +517,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Map<String, List<Cell>> solutions)? loaded,
+    TResult? Function(List<Solution> solutions)? loaded,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -529,7 +528,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Map<String, List<Cell>> solutions)? loaded,
+    TResult Function(List<Solution> solutions)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {

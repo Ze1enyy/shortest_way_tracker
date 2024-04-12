@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:best_way_tracker/assembly/factory.dart';
 import 'package:best_way_tracker/data/model/task_dto.dart';
-import 'package:best_way_tracker/domain/entity/cell.dart';
+import 'package:best_way_tracker/domain/entity/solution.dart';
 import 'package:best_way_tracker/domain/entity/task.dart';
 import 'package:best_way_tracker/utils/field_parser.dart';
 import 'package:http/http.dart' as http;
@@ -35,22 +35,22 @@ class TaskDataSource {
     return tasks;
   }
 
-  Future<void> sendAnswer(Map<String, List<Cell>> solutions, String url) async {
+  Future<void> sendAnswer(List<Solution> solutions, String url) async {
     await http.post(
       Uri.parse(url),
       headers: {
         'Content-Type': 'application/json',
       },
       body: jsonEncode(
-        solutions.entries
+        solutions
             .map(
               (solution) => {
-                'id': solution.key,
+                'id': solution.taskId,
                 'result': {
-                  'steps': solution.value
+                  'steps': solution.path
                       .map((cell) => {'x': '${cell.x}', 'y': '${cell.y}'})
                       .toList(),
-                  'path': FieldParser.stringify(solution.value),
+                  'path': FieldParser.stringify(solution.path),
                 },
               },
             )

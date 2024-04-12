@@ -1,5 +1,5 @@
 import 'package:best_way_tracker/data/datasource/task_datasource.dart';
-import 'package:best_way_tracker/domain/entity/cell.dart';
+import 'package:best_way_tracker/domain/entity/solution.dart';
 import 'package:best_way_tracker/domain/entity/task.dart';
 import 'package:best_way_tracker/domain/service/task_service.dart';
 
@@ -13,7 +13,7 @@ class TaskRepository implements TaskService {
   }
 
   @override
-  Future<dynamic> sendAnswer(Map<String, List<Cell>> solutions, String url) {
+  Future<dynamic> sendAnswer(List<Solution> solutions, String url) {
     return _dataSource.sendAnswer(solutions, url);
   }
 }

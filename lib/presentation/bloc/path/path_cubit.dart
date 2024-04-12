@@ -1,5 +1,5 @@
 import 'package:best_way_tracker/data/datasource/shortest_way_datasource.dart';
-import 'package:best_way_tracker/domain/entity/cell.dart';
+import 'package:best_way_tracker/domain/entity/solution.dart';
 import 'package:best_way_tracker/domain/entity/task.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,8 +14,9 @@ class PathCubit extends Cubit<PathState> {
   Future<void> findShortestWay({
     required List<Task> tasks,
   }) async {
+    final solutions = <Solution>[];
     emit(const _Loading());
-    final solutions = <String, List<Cell>>{};
+
     for (final task in tasks) {
       final path = _dataSource.findShortestWay(
         grid: task.grid,
@@ -25,7 +26,7 @@ class PathCubit extends Cubit<PathState> {
         endY: task.endY,
       );
       if (path.isNotEmpty) {
-        solutions.addEntries({MapEntry(task.id, path)});
+        solutions.add(Solution(taskId: task.id, path: path));
       } else {
         emit(const _Error('No path found'));
       }
